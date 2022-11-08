@@ -38,7 +38,11 @@ function App() {
   return (
     <div className="App">
       <p>{reply}</p>
-      <input onChange={(e) => setMessage(e.target.value)} value={message} />
+      <input
+        onChange={(e) => setMessage(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && getReply(message)}
+        value={message}
+      />
       <button onClick={() => getReply(message)}>send</button>
     </div>
   );
