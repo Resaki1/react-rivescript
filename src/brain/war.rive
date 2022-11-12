@@ -6,25 +6,25 @@
 - i have no answer
 
 + how many civilians have died in the war
-- <set group= civilians>do you really want to talk about the war?
+- <set group= civilians>Do you really want to talk about the war?
 
 + (yes|yeah|jup)
-% do you really want to talk about the war
-- ok fine, i will give you more information. are you interested in russian or ukrainian sources?
+% Do you really want to talk about the war
+- Ok fine, i will give you more information. Are you interested in russian or ukrainian sources?
 
 + no
-% do you really want to talk about the war
-- ok fine, so you could ask me something else 
+% Do you really want to talk about the war
+- Ok fine, so you could ask me something else 
 
 + [*] (russian|ukrainian) [*]
-% [*] are you interested in russian or ukrainian sources
+% [*] Are you interested in russian or ukrainian sources
 - <set selectedSide = <star>> So i will give you information about the numer of killed <get group> from an <get selectedSide> source.<call> test2 <get selectedSide><get group></call> 
 
 + how many russian soldiers have died in the war
-- <set group= russian soldiers>do you really want to talk about the war?
+- <set group= russian soldiers>Do you really want to talk about the war?
 
 + how many ukrainian soldiers have died in the war
-- <set group= ukrainian soldiers>do you really want to talk about the war?
+- <set group= ukrainian soldiers>Do you really want to talk about the war?
 
 > object test2 javascript
     var selectedSide = args[0];
