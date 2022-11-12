@@ -24,7 +24,13 @@ const Messages = ({
           </>
         );
       })}
-      <li className="dummy" ref={dummy}>
+      {messages.length === 0 && (
+        <li>
+          Welcome! Start chatting by typing a message into the input field at
+          the bottom and then pressing "send".
+        </li>
+      )}
+      <li key="dummy" className="dummy" ref={dummy}>
         -
       </li>
     </ul>

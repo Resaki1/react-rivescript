@@ -7,8 +7,8 @@ const loading_done = (bot: RiveScript) => {
   bot.sortReplies();
 };
 
-const loading_error = () => {
-  console.log("Error loading Bot!");
+const loading_error = (e: string) => {
+  console.log("Error loading Bot: " + e);
 };
 
 const bot = new RiveScript();
@@ -24,7 +24,7 @@ bot
     "src/brain/war.rive",
   ])
   .then(() => loading_done(bot))
-  .catch(loading_error);
+  .catch((e: string) => loading_error(e));
 
 let username = "local";
 

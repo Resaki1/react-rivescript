@@ -9,15 +9,15 @@
 - <set group= civilians>Do you really want to talk about the war?
 
 + (yes|yeah|jup)
-% Do you really want to talk about the war
-- Ok fine, i will give you more information. Are you interested in russian or ukrainian sources?
+% do you really want to talk about the war
+- Ok fine, i will give you more information. Are you interested in Russian or Ukrainian sources?
 
 + no
-% Do you really want to talk about the war
+% do you really want to talk about the war
 - Ok fine, so you could ask me something else 
 
 + [*] (russian|ukrainian) [*]
-% [*] Are you interested in russian or ukrainian sources
+% [*] are you interested in russian or ukrainian sources
 - <set selectedSide = <star>> So i will give you information about the numer of killed <get group> from an <get selectedSide> source.<call> test2 <get selectedSide><get group></call> 
 
 + how many russian soldiers have died in the war
