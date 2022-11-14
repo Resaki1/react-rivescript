@@ -38,7 +38,10 @@ const Chat = () => {
     setMessage("");
     setMessages([...messages, message]);
     bot.reply(username, message, ["hi"]).then((reply: string) => {
-      setReplies([...replies, reply]);
+      setTimeout(() => {
+        setReplies([...replies, reply]);
+        dummy.current?.scrollIntoView({ behavior: "smooth" });
+      }, 1000);
       dummy.current?.scrollIntoView({ behavior: "smooth" });
     });
   };

@@ -18,9 +18,11 @@ const Messages = ({
             <li key={"message" + index} className="message">
               {message}
             </li>
-            <li key={"reply" + index} className="reply">
-              {replies[index]}
-            </li>
+            {replies[index] && (
+              <li key={"reply" + index} className="reply">
+                {replies[index]}
+              </li>
+            )}
           </>
         );
       })}

@@ -17,20 +17,34 @@
   width: fit-content;
   max-width: 320px;
   text-align: left;
+
+  animation: scale 0.3s ease-in-out;
 }
 
 .message {
   background: #646cff;
   border-bottom-right-radius: 0;
   align-self: end;
+  transform-origin: bottom right;
 }
 
 .reply {
   background: #525252;
   border-top-left-radius: 0;
   align-self: start;
+  transform-origin: top left;
 }
 
 .dummy {
   visibility: hidden;
+  margin-bottom: 16px;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
