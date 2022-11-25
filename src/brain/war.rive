@@ -5,34 +5,39 @@
 + *
 - i have no answer
 
-+ how many civilians have died in the war
++ [*] civilians [*] died [*]
 - <set group=civilians>Do you really want to talk about the war?
 
-+ how many russian soldiers have died in the war
++ [*] russian soldiers [*] died [*]
 - <set group=russianSoldiers>Do you really want to talk about the war?
 
-+ how many ukrainian soldiers have died in the war
++ [*] ukrainian soldiers [*] died [*]
 - <set group=ukrainianSoldiers>Do you really want to talk about the war?
 
-+ (yes|yeah|jup)
++ [*] soldiers [*] died [*]
+- Do you want to know about Russian or Ukrainian soldiers?
+
++ [*] (russian|ukrainian) [*]
+% do you want to know about russian or ukrainian soldiers
+* <star> == russian => <set group=russianSoldiers>Ok fine, i will give you more information about the Russian soldiers. Are you interested in Russian or Ukrainian sources?
+* <star> == ukrainian => <set group=ukrainianSoldiers>Ok fine, i will give you more information about the Ukrainian soldiers. Are you interested in Russian or Ukrainian sources?
+- Ok fine, i will give you more information. Are you interested in Russian or Ukrainian sources?
+
++ [*] (yes|yeah|jup) [*]
 % do you really want to talk about the war
 - Ok fine, i will give you more information. Are you interested in Russian or Ukrainian sources?
 
-+ no
++ [*] no [*]
 % do you really want to talk about the war
 - Ok fine, so you could ask me something else 
 
 + [*] (russian|ukrainian) [*]
 % [*] are you interested in russian or ukrainian sources
-- <set selectedSide = <star>> So i will give you information about the numer of killed <get group> from an <get selectedSide> source.<call> test2 <get selectedSide>-<get group></call> 
+* <get group> == russianSoldiers => <set selectedSide = <star>> Here is what I found about Russian soldiers from an <get selectedSide> source: <call> getCasulties <get selectedSide>-<get group></call>
+* <get group> == ukrainianSoldiers => <set selectedSide = <star>> Here is what I found about Ukrainian soldiers from an <get selectedSide> source: <call> getCasulties <get selectedSide>-<get group></call>
+- <set selectedSide = <star>> Here is what I found about <get group> from an <get selectedSide> source: <call> getCasulties <get selectedSide>-<get group></call>
 
-+ how many russian soldiers have died in the war
-- <set group=russian_soldiers>Do you really want to talk about the war?
-
-+ how many ukrainian soldiers have died in the war
-- <set group=ukrainian_soldiers>Do you really want to talk about the war?
-
-> object test2 javascript
+> object getCasulties javascript
 
     var selectedSide = args[0].split("-")[0];
     var group = args[0].split("-")[1];
