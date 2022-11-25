@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const sources = ["UKRAINE", "RUSSIA", "WEST_WORLD"];
+const sources = ["UKRAINE", "RUSSIA", "US", "UN"];
 
 const categories = ["CIVILIANS", "RUSSIAN_SOLDIERS", "UKRAIN_SOLDIERS"];
 
@@ -39,17 +39,19 @@ export const Debug = () => {
     if (category == "CIVILIANS") {
       filteredCategoryTable = table.filter((row) => row[0] == "Civilians");
     } else if (category == "RUSSIAN_SOLDIERS") {
-      filteredCategoryTable = table.filter((row) => row[0].includes("Russia"));
+      filteredCategoryTable = table.filter((row) => row[0].includes("Russian"));
     } else if (category == "UKRAIN_SOLDIERS") {
-      filteredCategoryTable = table.filter((row) => row[0].includes("Ukrain"));
+      filteredCategoryTable = table.filter((row) => row[0].includes("Ukrain") || row[0].includes("Donetsk"));
     }
 
     if (source == "UKRAINE") {
       filteredCategoryAndSourceTable = filteredCategoryTable.filter((row) => row[3].includes("Ukrai") || row[3].includes("PR"));
     } else if (source == "RUSSIA") {
       filteredCategoryAndSourceTable = filteredCategoryTable.filter((row) => row[3].includes("Russ"));
-    } else if (source == "WEST_WORLD") {
+    } else if (source == "US") {
       filteredCategoryAndSourceTable = filteredCategoryTable.filter((row) => row[3].includes("US est"));
+    }else if (source == "UN") {
+      filteredCategoryAndSourceTable = filteredCategoryTable.filter((row) => row[3].includes("United Nations"));
     }
     console.log(table);
     console.log(filteredCategoryTable);
@@ -72,7 +74,8 @@ export const Debug = () => {
         <select value={source} onChange={(e) => setSource(e.target.value)}>
           <option value={"UKRAINE"}>Ukraine</option>
           <option value={"RUSSIA"}>Russia</option>
-          <option value={"WEST_WORLD"}>West World</option>
+          <option value={"US"}>USA</option>
+          <option value={"UN"}>UN</option>
         </select>
         <label>Category</label>
         <select value={category} onChange={(e) => setCategory(e.target.value)}>

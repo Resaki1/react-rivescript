@@ -9,7 +9,7 @@ function App() {
         <h1>Eliza</h1>
       </header>
       <Chat />
-      <Debug/>
+      {/* <Debug /> */}
     </div>
   );
 }
