@@ -8,6 +8,12 @@
 + how many civilians have died in the war
 - <set group=civilians>Do you really want to talk about the war?
 
++ how many russian soldiers have died in the war
+- <set group=russianSoldiers>Do you really want to talk about the war?
+
++ how many ukrainian soldiers have died in the war
+- <set group=ukrainianSoldiers>Do you really want to talk about the war?
+
 + (yes|yeah|jup)
 % do you really want to talk about the war
 - Ok fine, i will give you more information. Are you interested in Russian or Ukrainian sources?
@@ -18,7 +24,7 @@
 
 + [*] (russian|ukrainian) [*]
 % [*] are you interested in russian or ukrainian sources
-- <set selectedSide = <star>> So i will give you information about the numer of killed <get group> from an <get selectedSide> source.<call> test2 <get selectedSide><get group></call> 
+- <set selectedSide = <star>> So i will give you information about the numer of killed <get group> from an <get selectedSide> source.<call> test2 <get selectedSide>-<get group></call> 
 
 + how many russian soldiers have died in the war
 - <set group=russian_soldiers>Do you really want to talk about the war?
@@ -27,9 +33,11 @@
 - <set group=ukrainian_soldiers>Do you really want to talk about the war?
 
 > object test2 javascript
-    var selectedSide = args[0];
-    var group = args[1]; 
-    // group kann der Funktion mitgegeben werden, um zu unterscheiden welche Zahlen gesucht sind (civilian, russian soldiers, ukrainian soldiers)
-    return getData(selectedSide, group)
+
+    var selectedSide = args[0].split("-")[0];
+    var group = args[0].split("-")[1];
+    const casulties = JSON.parse(window.localStorage.getItem("casulties"))
+   
+    return casulties[group][selectedSide]
     
 < object
