@@ -20,7 +20,7 @@
 
 ### Example usage
 
-https://youtube.com/shorts/N3iNwceSG94
+https://youtube.com/shorts/PuVNSFZCNro
 
 ## Authors
 
